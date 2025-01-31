@@ -25,4 +25,10 @@ public class TaskList {
         return currentTaskList;
     }
 
+
+    //to mark and unmark tasks
+    public void toggleTasks(int taskListIndex, boolean markUnmark){
+        taskList.get(taskListIndex).isDone = markUnmark;
+    }
+
 }
