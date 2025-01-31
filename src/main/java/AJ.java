@@ -21,13 +21,23 @@ public class AJ {
         getDottedLine();
 
         String userCommand;
+        TaskList taskList = new TaskList();
         while(true){
             Scanner input = new Scanner(System.in);
             userCommand = input.nextLine();
             getDottedLine();
-            if(!userCommand.equals("bye")){
-                System.out.println(" ".repeat(AJ_TEXT_INDENTATION)+userCommand);
-            }else{
+            if(!userCommand.equals("bye") && !userCommand.equals("list")){
+                Task task = new Task(userCommand);
+                taskList.addTask(task);
+                System.out.println(" ".repeat(AJ_TEXT_INDENTATION)+ "Done!, added: "+userCommand);
+            } else if (userCommand.equals("list")) {
+                String [] currentList = taskList.getTaskList();
+
+                for(int i = 0; i < currentList.length; i++){
+                    System.out.println(" ".repeat(AJ_TEXT_INDENTATION)+ (i+1)+"] "+currentList[i]);
+                }
+
+            } else{
                 System.out.println(" ".repeat(AJ_TEXT_INDENTATION) + "Bye,take care! May your device's battery never run out.");
                 getDottedLine();
                 break;
