@@ -11,26 +11,39 @@ public class AJ {
         System.out.println(DOTTED_LINE+"\n");
     }
 
-
-    public static void main(String[] args) {
+    private static void getInitialGreeting() {
         getDottedLine();
         System.out.println("Hi there! I'm AJ, always happy to help :) ");
         System.out.println("What's on your mind?");
         getDottedLine();
         System.out.println("PS:In case I don't see you later, good afternoon, good evening, and good night");
         getDottedLine();
+    }
 
+    private static String getUserCommand() {
         String userCommand;
+        Scanner input = new Scanner(System.in);
+        userCommand = input.nextLine();
+        return userCommand;
+    }
+
+
+    public static void main(String[] args) {
+
+        getInitialGreeting();
+
         TaskList taskList = new TaskList();
+
         while(true){
-            Scanner input = new Scanner(System.in);
-            userCommand = input.nextLine();
+            String userCommand = getUserCommand();
             userCommand = userCommand.strip(); //remove leading and trailing whitespaces
+
             Task task = new Task(userCommand);
-            getDottedLine();
+
+            getDottedLine(); //the upper dotted line
+
             if(!userCommand.equals("bye") && !userCommand.equals("list")
                     && !userCommand.contains("mark ") && !userCommand.contains("unmark ")){
-                //Task task = new Task(userCommand);
                 taskList.addTask(task);
                 System.out.println(" ".repeat(AJ_TEXT_INDENTATION)+ "Done!, added: "+userCommand);
             } else if (userCommand.equals("list")) {
@@ -56,7 +69,11 @@ public class AJ {
                 getDottedLine();
                 break;
             }
-            getDottedLine();
+            getDottedLine(); // the lower dotted line
         }
     }
+
+
+
+
 }
