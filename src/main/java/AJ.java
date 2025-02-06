@@ -1,4 +1,7 @@
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 
 public class AJ {
@@ -11,6 +14,15 @@ public class AJ {
     //used to segregate user and bot text
     public static void getDottedLine(){
         System.out.println(DOTTED_LINE+"\n");
+    }
+
+    public static String[] userCommandParser(String[] command){
+        ArrayList<String> output= new ArrayList<String>();
+        for(int i=0; i<command.length; i++){
+            if(command[i].equals("")){continue;}
+            output.add(command[i]);
+        }
+        return output.toArray(new String[output.size()]);
     }
 
     private static void getInitialGreeting() {
@@ -58,7 +70,9 @@ public class AJ {
                     // I'm accessing the index of that attribute)
                 }
             }else{
-                String[] userCommandSplitArray = userCommand.split(" ");
+                String[] userCommandSplitArray = userCommandParser(userCommand.split(" "));
+                // array containing only user words, no whitespaces!
+                //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
 
                 switch (targetWord){
