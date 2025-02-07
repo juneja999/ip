@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class AJ {
 
-    private final static String DOTTED_LINE="***********************(^‿^)***************************";
-    private final static String AJ_TEXT_INDENTATION = " ".repeat(7);
+    public final static String DOTTED_LINE="***********************(^‿^)***************************";
+    public final static String AJ_TEXT_INDENTATION = " ".repeat(7);
     //to provide indentation when bot replies
 
 
@@ -61,27 +61,29 @@ public class AJ {
                 getDottedLine();
                 break;
             }else if(userCommand.equals("list")){
-                String [] currentList = taskList.getTaskList();
-
-                for(int i = 0; i < currentList.length; i++){
-                    System.out.print(AJ_TEXT_INDENTATION + (i+1)+"] "+currentList[i]); //because indexing starts from 0
-                    System.out.println(AJ_TEXT_INDENTATION +(taskList.taskList.get(i).isDone ? "{completed}" :""));
-                    //the taskList has a protected attribute taskList(mention in file TaskList,
-                    // I'm accessing the index of that attribute)
-                }
+                taskList.printTaskList();
+//                String [] currentList = taskList.getTaskList();
+//
+//                for(int i = 0; i < currentList.length; i++){
+//                    System.out.print(AJ_TEXT_INDENTATION + (i+1)+"] "+currentList[i]); //because indexing starts from 0
+//                    System.out.println(AJ_TEXT_INDENTATION +(taskList.taskList.get(i).isDone ? "{completed}" :""));
+//                    //the taskList has a protected attribute taskList(mention in file TaskList,
+//                    // I'm accessing the index of that attribute)
+//
+//                }
             }else{
                 String[] userCommandSplitArray = userCommandParser(userCommand.split(" "));
-                // array containing only user words, no whitespaces!
+                // array containing only user words, no whitespaces
                 //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
 
-                switch (targetWord){
+                switch (targetWord.toLowerCase()){ //<------feature 
                 case "mark":
                 case "unmark":
                     int taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
                     //because we had shifted +1 when writing
-                    taskList.toggleTasks(taskListIndex, (userCommand.contains("unmark ") ? false : true));
-                    if(userCommand.contains("unmark ")){
+                    taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
+                    if(targetWord.toLowerCase().equals("unmark")){
                         System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
                         System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
                         // taskList.taskList because I gave the same name in this file and TaskList file
@@ -91,7 +93,28 @@ public class AJ {
                     }
                     break;
 
-                default:
+                case "todo":
+                    ToDos taskToDos = new ToDos(userCommand);
+                    taskList.addTask(taskToDos);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskToDos.taskTypeChar+"] " +userCommand);
+                    break;
+
+                case "deadline":
+                    Deadlines taskDeadlines = new Deadlines(Deadlines.getDeadlinesData(userCommandSplitArray)[0],
+                            Deadlines.getDeadlinesData(userCommandSplitArray)[1] );
+                    taskList.addTask(taskDeadlines);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskDeadlines.taskTypeChar+"] " +userCommand);
+                    break;
+
+                case "event":
+                    Events taskEvents = new Events(Events.getEventsData(userCommandSplitArray)[0],
+                            Events.getEventsData(userCommandSplitArray)[1],
+                            Events.getEventsData(userCommandSplitArray)[2] );
+                    taskList.addTask(taskEvents);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskEvents.taskTypeChar+"] " +userCommand);
+                    break;
+
+                default: // <-------------------------------------- change here
                     taskList.addTask(task);
                     System.out.println(AJ_TEXT_INDENTATION + "Done!, added: "+userCommand);
                     break;
