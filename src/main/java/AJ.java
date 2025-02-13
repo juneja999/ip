@@ -86,8 +86,15 @@ public class AJ {
                 switch (targetWord.toLowerCase()){ //<------feature
                 case "mark":
                 case "unmark":
-                    int taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
-                    //because we had shifted +1 when writing
+                    int taskListIndex = 0;
+                    try {
+                        taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
+                        //because we had shifted +1 when writing
+                    } catch (NumberFormatException e) {
+                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Sorry, I would need the serial number of the task");
+                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try again!");
+                        break;
+                    }
                     taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
                     if(targetWord.toLowerCase().equals("unmark")){
                         System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
