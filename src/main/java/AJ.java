@@ -95,14 +95,22 @@ public class AJ {
                         System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try again!");
                         break;
                     }
-                    taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
-                    if(targetWord.toLowerCase().equals("unmark")){
-                        System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
-                        System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
-                        // taskList.taskList because I gave the same name in this file and TaskList file
-                    }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
-                        System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
-                        System.out.println(AJ_TEXT_INDENTATION +"I have marked task: " + taskList.taskList.get(taskListIndex).taskDescription);
+                    try {
+                        taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
+                        if(targetWord.toLowerCase().equals("unmark")){
+                            System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
+                            System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
+                            // taskList.taskList because I gave the same name in this file and TaskList file
+                        }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
+                            System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
+                            System.out.println(AJ_TEXT_INDENTATION +"I have marked task: " + taskList.taskList.get(taskListIndex).taskDescription);
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+                        if(taskListIndex >=0){
+                            System.out.println("Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                        }else{
+                            System.out.println("Sorry but that serial number was not recognised, please try again!");
+                        }
                     }
                     break;
 
