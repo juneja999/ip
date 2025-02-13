@@ -55,4 +55,8 @@ public class TaskList {
         taskList.get(taskListIndex).isDone = markUnmark;
     }
 
+    public void removeTask(int taskListIndex){
+        taskList.remove(taskListIndex);
+    }
+
 }
