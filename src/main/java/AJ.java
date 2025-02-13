@@ -77,7 +77,7 @@ public class AJ {
                 //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
 
-                switch (targetWord.toLowerCase()){ //<------feature 
+                switch (targetWord.toLowerCase()){ //<------feature
                 case "mark":
                 case "unmark":
                     int taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
@@ -96,14 +96,14 @@ public class AJ {
                 case "todo":
                     ToDos taskToDos = new ToDos(userCommand);
                     taskList.addTask(taskToDos);
-                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskToDos.taskTypeChar+"] " +userCommand);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + taskToDos.getTaskInfo());
                     break;
 
                 case "deadline":
                     Deadlines taskDeadlines = new Deadlines(Deadlines.getDeadlinesData(userCommandSplitArray)[0],
                             Deadlines.getDeadlinesData(userCommandSplitArray)[1] );
                     taskList.addTask(taskDeadlines);
-                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskDeadlines.taskTypeChar+"] " +userCommand);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + taskDeadlines.getTaskInfo());
                     break;
 
                 case "event":
@@ -111,7 +111,7 @@ public class AJ {
                             Events.getEventsData(userCommandSplitArray)[1],
                             Events.getEventsData(userCommandSplitArray)[2] );
                     taskList.addTask(taskEvents);
-                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + "["+taskEvents.taskTypeChar+"] " +userCommand);
+                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + taskEvents.getTaskInfo());
                     break;
 
                 default: // <-------------------------------------- change here
