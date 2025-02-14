@@ -48,11 +48,16 @@ public class AJ {
 
         TaskList taskList = new TaskList();
 
+        int defaultCaseTurn =0; //used in the default case when task type not identified
+
+
+
         while(true){
             String userCommand = getUserCommand(); //string version
             userCommand = userCommand.strip(); //remove leading and trailing whitespaces
 
             Task task = new Task(userCommand); // Task version
+
 
             getDottedLine(); //the upper dotted line
 
@@ -76,20 +81,36 @@ public class AJ {
                 // array containing only user words, no whitespaces
                 //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
+                if(defaultCaseTurn==1){targetWord="make sure user doesnt put in mark/unmark etc at this stage";}
 
                 switch (targetWord.toLowerCase()){ //<------feature
                 case "mark":
                 case "unmark":
-                    int taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
-                    //because we had shifted +1 when writing
-                    taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
-                    if(targetWord.toLowerCase().equals("unmark")){
-                        System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
-                        System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
-                        // taskList.taskList because I gave the same name in this file and TaskList file
-                    }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
-                        System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
-                        System.out.println(AJ_TEXT_INDENTATION +"I have marked task: " + taskList.taskList.get(taskListIndex).taskDescription);
+                    int taskListIndex = 0;
+                    try {
+                        taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
+                        //because we had shifted +1 when writing
+                    } catch (NumberFormatException e) {
+                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Sorry, I would need the serial number of the task");
+                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try again!");
+                        break;
+                    }
+                    try {
+                        taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
+                        if(targetWord.toLowerCase().equals("unmark")){
+                            System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
+                            System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
+                            // taskList.taskList because I gave the same name in this file and TaskList file
+                        }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
+                            System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
+                            System.out.println(AJ_TEXT_INDENTATION +"I have marked task: " + taskList.taskList.get(taskListIndex).taskDescription);
+                        }
+                    } catch (IndexOutOfBoundsException e) {
+                        if(taskListIndex >=0){
+                            System.out.println("Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                        }else{
+                            System.out.println("Sorry but that serial number was not recognised, please try again!");
+                        }
                     }
                     break;
 
@@ -114,10 +135,34 @@ public class AJ {
                     System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + taskEvents.getTaskInfo());
                     break;
 
-                default: // <-------------------------------------- change here
-                    taskList.addTask(task);
-                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: "+userCommand);
+                default: //if user doesn't mention any of  the above
+
+                    if(defaultCaseTurn == 0){
+                        AJExceptions.taskTypeNotFound(userCommand);
+                        ToDos tempDefaultCase = new ToDos(userCommand);
+                        taskList.addTask(tempDefaultCase);
+                        defaultCaseTurn = 1;
+                    }else{
+                        if(userCommand.equals("yes")){
+                            System.out.println(AJ_TEXT_INDENTATION + "Done!, added: "+
+                                    taskList.taskList.get(taskList.getSize()-1).getTaskInfo());
+                            //taskList has its own taskList(from class TaskList)
+                        } else if (userCommand.equals("no")) {
+                            System.out.println(AJ_TEXT_INDENTATION + "Okay, got it boss!");
+                            taskList.removeTask(taskList.getSize()-1);
+                        }else{
+                            System.out.println(AJ_TEXT_INDENTATION + "That command could not be recognised " +
+                                    "for this instance." );
+                            System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try adding the task again. Thanks!");
+                            taskList.removeTask(taskList.getSize()-1);
+                        }
+                        defaultCaseTurn = 0;
+
+                    }
                     break;
+//                    taskList.addTask(task);
+//                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: "+userCommand);
+//                    break;
                 }
 
             }
