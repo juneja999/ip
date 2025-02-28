@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class AJ {
-
+    
     public final static String DOTTED_LINE="***********************(^‿^)***************************";
     public final static String AJ_TEXT_INDENTATION = " ".repeat(7);
     //to provide indentation when bot replies
@@ -166,6 +166,7 @@ public class AJ {
                 }
 
             }
+
             getDottedLine(); // the lower dotted line
         }
     }
