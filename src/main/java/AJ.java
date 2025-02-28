@@ -99,18 +99,49 @@ public class AJ {
                         taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
                         if(targetWord.toLowerCase().equals("unmark")){
                             System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
-                            System.out.println(AJ_TEXT_INDENTATION + "I have unmarked task: " +taskList.taskList.get(taskListIndex).taskDescription);
+                            System.out.println(AJ_TEXT_INDENTATION + "I have unmarked: "+ "["+taskList.taskList.get(taskListIndex).taskTypeChar+"] "
+                                    +taskList.taskList.get(taskListIndex).taskDescription);
                             // taskList.taskList because I gave the same name in this file and TaskList file
                         }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
                             System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
-                            System.out.println(AJ_TEXT_INDENTATION +"I have marked task: " + taskList.taskList.get(taskListIndex).taskDescription);
+                            System.out.println(AJ_TEXT_INDENTATION +"I have marked: " +"["+taskList.taskList.get(taskListIndex).taskTypeChar+"] "
+                                    + taskList.taskList.get(taskListIndex).taskDescription);
                         }
                     } catch (IndexOutOfBoundsException e) {
                         if(taskListIndex >=0){
-                            System.out.println("Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                            System.out.println(AJ_TEXT_INDENTATION+"Mr. overachiever, you dont have that many tasks!, if only I could be like you");
                         }else{
-                            System.out.println("Sorry but that serial number was not recognised, please try again!");
+                            System.out.println(AJ_TEXT_INDENTATION+"Sorry but that serial number was not recognised, please try again!");
+                            System.out.println(AJ_TEXT_INDENTATION+"Please try to input a non-zero positive serial number");
+
                         }
+                    }
+                    break;
+
+                case "delete":
+                    int indexToBeDeleted=0;
+                    try{
+                        indexToBeDeleted = Integer.parseInt(userCommandSplitArray[1]) - 1;
+                        if((taskList.getSize()>= indexToBeDeleted+1) && (indexToBeDeleted > -1)){
+                            System.out.println(AJ_TEXT_INDENTATION+"Okay, no problem! ;)");
+                        }
+                        //this if statement insures that if user inputs index out of bounds the above statement is not
+                        //printed , because that catch is will be triggered in the below line
+                        System.out.println(AJ_TEXT_INDENTATION+"I have \"avada kedavra'd\": "
+                                +"["+taskList.taskList.get(indexToBeDeleted).taskTypeChar+"] "+
+                                taskList.taskList.get(indexToBeDeleted).taskDescription);
+                        taskList.taskList.remove(indexToBeDeleted);
+                    }catch(IndexOutOfBoundsException e){
+                        if(indexToBeDeleted >=0){
+                            System.out.println(AJ_TEXT_INDENTATION+"Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                        }else{
+                            System.out.println(AJ_TEXT_INDENTATION+"Sorry but that serial number was not recognised!");
+                            System.out.println(AJ_TEXT_INDENTATION+"Please try to input a non-zero positive serial number");
+
+
+                        }
+                    }catch(NumberFormatException e){
+                        System.out.println(AJ_TEXT_INDENTATION+"Sorry, I would need the serial number of the task");
                     }
                     break;
 
