@@ -16,14 +16,6 @@ public class AJ {
         System.out.println(DOTTED_LINE+"\n");
     }
 
-    public static String[] userCommandParser(String[] command){
-        ArrayList<String> output= new ArrayList<String>();
-        for(int i=0; i<command.length; i++){
-            if(command[i].equals("")){continue;}
-            output.add(command[i]);
-        }
-        return output.toArray(new String[output.size()]);
-    }
 
     private static void getInitialGreeting() {
         getDottedLine();
@@ -77,7 +69,7 @@ public class AJ {
 //
 //                }
             }else{
-                String[] userCommandSplitArray = userCommandParser(userCommand.split(" "));
+                String[] userCommandSplitArray = Parser.userCommandParser(userCommand.split(" "));
                 // array containing only user words, no whitespaces
                 //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
