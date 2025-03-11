@@ -2,6 +2,12 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * this is the main function for AJ chatbot
+ * all main interactions are routed through this class
+ * we take user commands continuously
+ * for each command, we split it into a user command array and target the main word like 'list', 'bye', 'mark', 'event' etc
+ */
 
 
 public class AJ {

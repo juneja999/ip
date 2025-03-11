@@ -11,6 +11,12 @@ public class Events extends Task {
         this.To = TimeInterpreter.InterpretTime(To);
     }
 
+    /**
+     * helps us segregate event description, from date and to date
+     * @param command inputted by user
+     * @return this segregated info in an array
+     * index 0: description, index 1: from date, index 2: to date
+     */
     public static String[] getEventsData(String[] command) {
         String[] eventsData = new String[]{"","",""};
         int flag1 = 0;

@@ -1,3 +1,6 @@
+/**
+ * defines the behaviour of all Task types like events, deadlines and t0d0 ( which are its' subclasses)
+ */
 public class Task {
     protected String taskDescription;
     protected Boolean isDone;
@@ -12,6 +15,11 @@ public class Task {
         this.taskDescription = taskDescription;
         this.isDone = false;
     }
+
+    /**
+     * this method enables us to get all the essential information of a task(description, status, Task type)
+     * @return all this information as a string
+     */
 
     public String getTaskInfo(){
         return "["+this.taskTypeChar+"] "+this.taskDescription+" ".repeat(4)+ (this.isDone ? "{completed}" : "");

@@ -1,4 +1,12 @@
-
+/**
+ * this class contains the most common messages that appear throughout the code like initial greeting, exit message,
+ * file creation, file creation error etc.
+ * NOTE:- we do NOT include all text that is displayed on CLI because some print statements have strings +
+ * information printed from other files to which UiMessages does not have direct access.
+ * Ex: Many times we print the task info and to get the updated tasklist in this class would be more difficult than
+ * excluding those print statements from this class and directly printing them from the class in which they are being
+ * manipulated 
+ */
 
 
 public class UiMessages {
