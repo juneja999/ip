@@ -135,6 +135,11 @@ public class AJ {
                     System.out.println(AJ_TEXT_INDENTATION + "Done!, added: " + taskEvents.getTaskInfo());
                     break;
 
+                case "find":
+                    Boolean IsCaseSensitive = userCommandSplitArray[1].toLowerCase().equals("cs");
+                    TaskSearch.searchTask(IsCaseSensitive, userCommandSplitArray,taskList);
+                    break;
+
                 default: //if user doesn't mention any of  the above
 
                     if(defaultCaseTurn == 0){
