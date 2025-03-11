@@ -1,6 +1,2 @@
-1 ~ D ~ jog ~ 5 ~ yet to be completed
-2 ~ E ~ dance ~ 5 - 6 ~ yet to be completed
-3 ~ D ~ dd ~ 657 ~ yet to be completed
-4 ~ D ~ sing ~ 76 ~ yet to be completed
-5 ~ D ~ dance 2 ~ 990 ~ yet to be completed
-6 ~ E ~ work ~ 5 - 7 ~ yet to be completed
+1 ~ E ~ dance ~ 5 - 6 ~ completed
+2 ~ D ~ dd ~ 657 ~ completed

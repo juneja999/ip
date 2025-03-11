@@ -74,6 +74,10 @@ public class TaskList {
         saveTasksToFile();
     }
 
+    public void GetSaveTasksToFile(){
+        saveTasksToFile();
+    }
+
 
     // Save tasks to file
     private void saveTasksToFile() {

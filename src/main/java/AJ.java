@@ -17,15 +17,6 @@ public class AJ {
     }
 
 
-    private static void getInitialGreeting() {
-        getDottedLine();
-        System.out.println("Hi there! I'm AJ, always happy to help :) ");
-        System.out.println("What's on your mind?");
-        getDottedLine();
-        System.out.println("PS:In case I don't see you later, good afternoon, good evening, and good night");
-        getDottedLine();
-    }
-
     private static String getUserCommand() {
         String userCommand;
         Scanner input = new Scanner(System.in);
@@ -36,7 +27,7 @@ public class AJ {
 
     public static void main(String[] args) {
 
-        getInitialGreeting();
+        UiMessages.getInitialGreeting();
 
         TaskList taskList = new TaskList();
 
@@ -54,20 +45,15 @@ public class AJ {
             getDottedLine(); //the upper dotted line
 
             if(userCommand.equals("bye")){
-                System.out.println(AJ_TEXT_INDENTATION + "Bye,take care! May your device's battery never run out.");
-                getDottedLine();
+                UiMessages.AJExitMessage();
+                taskList.GetSaveTasksToFile();
+                //save the updated file once the user has exited
                 break;
             }else if(userCommand.equals("list")){
                 taskList.printTaskList();
-//                String [] currentList = taskList.getTaskList();
-//
-//                for(int i = 0; i < currentList.length; i++){
-//                    System.out.print(AJ_TEXT_INDENTATION + (i+1)+"] "+currentList[i]); //because indexing starts from 0
-//                    System.out.println(AJ_TEXT_INDENTATION +(taskList.taskList.get(i).isDone ? "{completed}" :""));
 //                    //the taskList has a protected attribute taskList(mention in file TaskList,
 //                    // I'm accessing the index of that attribute)
 //
-//                }
             }else{
                 String[] userCommandSplitArray = Parser.userCommandParser(userCommand.split(" "));
                 // array containing only user words, no whitespaces
@@ -83,29 +69,26 @@ public class AJ {
                         taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
                         //because we had shifted +1 when writing
                     } catch (NumberFormatException e) {
-                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Sorry, I would need the serial number of the task");
-                        System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try again!");
+                        UiMessages.RequestSerialNumber();
                         break;
                     }
                     try {
                         taskList.toggleTasks(taskListIndex, targetWord.toLowerCase().equals("unmark") ? false : true);
                         if(targetWord.toLowerCase().equals("unmark")){
-                            System.out.println(AJ_TEXT_INDENTATION +"Got it. No worries! you will do it soon.");
+                            UiMessages.TaskUnmarkMessage();
                             System.out.println(AJ_TEXT_INDENTATION + "I have unmarked: "+ "["+taskList.taskList.get(taskListIndex).taskTypeChar+"] "
                                     +taskList.taskList.get(taskListIndex).taskDescription);
                             // taskList.taskList because I gave the same name in this file and TaskList file
                         }else{ //in the above line, .taskDescription gives the name, otherwise we get memory address
-                            System.out.println(AJ_TEXT_INDENTATION +"Let's gooo!! Keep up the productivity.");
+                            UiMessages.TaskMarkMessage();
                             System.out.println(AJ_TEXT_INDENTATION +"I have marked: " +"["+taskList.taskList.get(taskListIndex).taskTypeChar+"] "
                                     + taskList.taskList.get(taskListIndex).taskDescription);
                         }
                     } catch (IndexOutOfBoundsException e) {
                         if(taskListIndex >=0){
-                            System.out.println(AJ_TEXT_INDENTATION+"Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                            UiMessages.NotEnoughTaskMessage();
                         }else{
-                            System.out.println(AJ_TEXT_INDENTATION+"Sorry but that serial number was not recognised, please try again!");
-                            System.out.println(AJ_TEXT_INDENTATION+"Please try to input a non-zero positive serial number");
-
+                            UiMessages.RequestPositiveSerialNumber();
                         }
                     }
                     break;
@@ -125,15 +108,12 @@ public class AJ {
                         taskList.taskList.remove(indexToBeDeleted);
                     }catch(IndexOutOfBoundsException e){
                         if(indexToBeDeleted >=0){
-                            System.out.println(AJ_TEXT_INDENTATION+"Mr. overachiever, you dont have that many tasks!, if only I could be like you");
+                            UiMessages.NotEnoughTaskMessage();
                         }else{
-                            System.out.println(AJ_TEXT_INDENTATION+"Sorry but that serial number was not recognised!");
-                            System.out.println(AJ_TEXT_INDENTATION+"Please try to input a non-zero positive serial number");
-
-
+                            UiMessages.RequestPositiveSerialNumber();
                         }
                     }catch(NumberFormatException e){
-                        System.out.println(AJ_TEXT_INDENTATION+"Sorry, I would need the serial number of the task");
+                        UiMessages.RequestSerialNumber();
                     }
                     break;
 
@@ -183,9 +163,6 @@ public class AJ {
 
                     }
                     break;
-//                    taskList.addTask(task);
-//                    System.out.println(AJ_TEXT_INDENTATION + "Done!, added: "+userCommand);
-//                    break;
                 }
 
             }
