@@ -145,9 +145,7 @@ public class AJ {
                             System.out.println(AJ_TEXT_INDENTATION + "Okay, got it boss!");
                             taskList.removeTask(taskList.getSize()-1);
                         }else{
-                            System.out.println(AJ_TEXT_INDENTATION + "That command could not be recognised " +
-                                    "for this instance." );
-                            System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try adding the task again. Thanks!");
+                            UiMessages.WrongCommandInDefaultCase();
                             taskList.removeTask(taskList.getSize()-1);
                         }
                         defaultCaseTurn = 0;

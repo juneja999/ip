@@ -119,9 +119,9 @@ public class TaskList {
         if (!directory.exists()) {
             // Create the directory if it doesn't exist
             if (directory.mkdirs()) {
-                System.out.println(AJ.AJ_TEXT_INDENTATION + "Directory 'UserData' has been created for you");
+                UiMessages.DirectoryCreation();
             } else {
-                System.out.println(AJ.AJ_TEXT_INDENTATION + "Failed to create 'UserData' directory.");
+                UiMessages.FailedDirectoryCreation();
             }
         }
 
@@ -131,11 +131,9 @@ public class TaskList {
             if (!file.exists()) {
                 // If the file doesn't exist, create it
                 if (file.createNewFile()) {
-                    System.out.println(AJ.AJ_TEXT_INDENTATION + "I will also create a new file to save your tasks ;)");
-                    System.out.println(AJ.AJ_TEXT_INDENTATION + "You can access it via UserData -> SavedTasks.txt");
-                    System.out.println(AJ.DOTTED_LINE);
+                    UiMessages.FileCreation();
                 } else {
-                    System.out.println(AJ.AJ_TEXT_INDENTATION + "Failed to create tasks file.");
+                    UiMessages.FailedFileCreation();
                 }
             } else {
                 // Load tasks from the file

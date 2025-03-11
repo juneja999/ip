@@ -3,6 +3,7 @@
 
 public class UiMessages {
 
+    //Messages in AJ
     public static void getInitialGreeting() {
         AJ.getDottedLine();
         System.out.println("Hi there! I'm AJ, always happy to help :) ");
@@ -38,4 +39,32 @@ public class UiMessages {
         System.out.println(AJ.AJ_TEXT_INDENTATION+"Sorry but that serial number was not recognised, please try again!");
         System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try to input a non-zero positive serial number");
     }
+
+    public static void WrongCommandInDefaultCase(){
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "That command could not be recognised " +
+                "for this instance." );
+        System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try adding the task again. Thanks!");
+    }
+
+
+    //Messages in TaskList for storage
+    public static void DirectoryCreation() {
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "Directory 'UserData' has been created for you");
+    }
+
+    public static void FailedDirectoryCreation() {
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "Failed to create 'UserData' directory.");
+    }
+
+    public static void FileCreation() {
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "I will also create a new file to save your tasks ;)");
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "You can access it via UserData -> SavedTasks.txt");
+        System.out.println(AJ.DOTTED_LINE);
+    }
+
+    public static void FailedFileCreation() {
+        System.out.println(AJ.AJ_TEXT_INDENTATION + "Failed to create tasks file.");
+    }
+
+
 }
