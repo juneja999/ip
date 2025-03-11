@@ -17,14 +17,6 @@ public class AJ {
     }
 
 
-    private static String getUserCommand() {
-        String userCommand;
-        Scanner input = new Scanner(System.in);
-        userCommand = input.nextLine();
-        return userCommand;
-    }
-
-
     public static void main(String[] args) {
 
         UiMessages.getInitialGreeting();
@@ -36,8 +28,7 @@ public class AJ {
 
 
         while(true){
-            String userCommand = getUserCommand(); //string version
-            userCommand = userCommand.strip(); //remove leading and trailing whitespaces
+            String userCommand = UserCommands.getUserCommand(); //string version
 
             Task task = new Task(userCommand); // Task version
 
