@@ -4,7 +4,7 @@ public class Deadlines extends Task {
     public Deadlines(String Description, String by) {
         super(Description);
         this.taskTypeChar="D";
-        this.by = by;
+        this.by = TimeInterpreter.InterpretTime(by);
     }
 
     public static String[] getDeadlinesData(String[] command ){
