@@ -7,6 +7,13 @@ public class Deadlines extends Task {
         this.by = by;
     }
 
+    /**
+     * this method enables us to segregate all the essential info of a deadline ( description and by date)
+     * @param command user input
+     * @return this segregated info in an array
+     * index 0: description, index 1: by date
+     */
+
     public static String[] getDeadlinesData(String[] command ){
         String[] deadlinesData = new String[2];
         String deadlinesByDate="";

@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * this class creates a tasklist which is an arraylist consisting of type 'task'
+ * it also contains methods like add task/delete task/toggling a task status/print the task list etc.
+ * this class also contains methods to load tasks from and save tasks to a hard drive
+ */
 
 public class TaskList {
 
@@ -74,10 +79,19 @@ public class TaskList {
         saveTasksToFile();
     }
 
+    /**
+     * gives a getter function for calling save tasks to file function
+     * this is mainly utilised after user exits the system
+     */
+
     public void GetSaveTasksToFile(){
         saveTasksToFile();
     }
 
+    /**
+     * saves tasks to hard drive in teh location UserData->SavedTasks
+     *continuously updated whenever a task is added, deleted or when the prgram is exited
+     */
 
     // Save tasks to file
     private void saveTasksToFile() {
@@ -114,6 +128,11 @@ public class TaskList {
     }
 
 
+    /**
+     * this method loads tasks from the hard drive on the start of the program
+     * For the first time user, if a directory called "User Data" doesnt exist then it adds one, it further creates a file
+     * called SavedTasks
+     */
     private void loadTasksFromFile() {
         File directory = new File("UserData");
         if (!directory.exists()) {
