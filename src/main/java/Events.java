@@ -1,3 +1,5 @@
+import java.sql.Time;
+
 public class Events extends Task {
     public String From;
     public String To;
@@ -5,8 +7,8 @@ public class Events extends Task {
     public Events(String Description, String From, String To) {
         super(Description);
         this.taskTypeChar="E";
-        this.From = From;
-        this.To = To;
+        this.From = TimeInterpreter.InterpretTime(From);
+        this.To = TimeInterpreter.InterpretTime(To);
     }
 
     public static String[] getEventsData(String[] command) {
