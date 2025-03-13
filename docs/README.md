@@ -166,8 +166,8 @@ User also needs to specify if the search should be case-sensitive or case-insens
 User **must write cs** to `CaseSensitivity` for case-sensitive search, 
 **otherwise must write ncs**.  
 
-**Format:** `find CaseSensitivity TargetWord(s)`  
-**Example:**
+    **Format:** `find CaseSensitivity TargetWord(s)`  
+    **Example:**  
 1. `find ncs dinosaur` will result in 
       ````
       Here is what I found: 
