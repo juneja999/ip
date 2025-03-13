@@ -3,7 +3,7 @@ public class Deadlines extends Task {
 
     public Deadlines(String Description, String by) {
         super(Description);
-        this.taskTypeChar="D";
+        this.taskTypeChar = "D";
         this.by = TimeInterpreter.InterpretTime(by);
     }
 
@@ -16,24 +16,24 @@ public class Deadlines extends Task {
 
     public static String[] getDeadlinesData(String[] command ){
         String[] deadlinesData = new String[2];
-        String deadlinesByDate="";
-        String deadlinesDescription="";
-        int flag=0;
+        String deadlinesByDate = "";
+        String deadlinesDescription = "";
+        int byTime = 0;
         for(int i=1;i<command.length;i++){ //first word is deadlines, so skip it
             if(command[i].startsWith("/")){
                 //deadlinesByDate+=command[i].substring(1); <------- TO NOT HAVE MULTIPLE BY BY: STATEMENTS
-                flag=1;
+                byTime = 1;
                 continue;
             }
-            if(flag==1){
-                deadlinesByDate+=" "+command[i];
+            if(byTime == 1){
+                deadlinesByDate += " "+command[i];
 
             }else{
-                deadlinesDescription+=command[i]+" ";
+                deadlinesDescription += command[i]+" ";
             }
         }
-        deadlinesData[0]=deadlinesDescription;
-        deadlinesData[1]=deadlinesByDate;
+        deadlinesData[0] = deadlinesDescription;
+        deadlinesData[1] = deadlinesByDate;
         return deadlinesData;
     }
 

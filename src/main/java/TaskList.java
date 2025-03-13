@@ -42,22 +42,7 @@ public class TaskList {
         return currentTaskList;
     }
 
-//    public void printTaskList(){
-//        for(int i = 0; i < taskList.size(); i++){
-//            Task thisTask = taskList.get(i);
-//
-//            switch (thisTask.taskTypeChar){
-//            case "T":
-//                System.out.println(AJ.AJ_TEXT_INDENTATION + i+1+"] "+"["+ thisTask.taskTypeChar+"] "+
-//                                thisTask.taskDescription +" ".repeat(4) + (thisTask.isDone ? "{completed}" : ""));
-//                break;
-//
-//            case "D":
-//                //START FROM HERE
-//
-//            }
-//        }
-//    }
+
 
     public void printTaskList(){
         for(int i = 0; i < taskList.size(); i++){
@@ -98,12 +83,12 @@ public class TaskList {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             int i=0;
             for (Task task : taskList) {
-//                writer.write((i+1) + "] "+ task.getTaskInfo()+"\n");
-//                i++;
+
                 switch (task.taskTypeChar) {
                 case "T":
                     writer.write((i + 1) + FILE_SEPARATOR + task.taskTypeChar + FILE_SEPARATOR + task.taskDescription.trim() + FILE_SEPARATOR +
                             (task.isDone ? "completed" : "yet to be completed")+"\n");
+                    //format on how tasks are saved in the local file
                     break;
                 case "D":
                     assert task instanceof Deadlines;
@@ -116,7 +101,7 @@ public class TaskList {
                     assert task instanceof Events;
                     Events events = (Events) task;
                     writer.write((i + 1) + FILE_SEPARATOR + events.taskTypeChar + FILE_SEPARATOR + events.taskDescription.trim() + FILE_SEPARATOR +
-                            events.From.trim() + " - " + events.To.trim() + FILE_SEPARATOR + (events.isDone ? "completed" : "yet to be completed")+"\n");
+                            events.from.trim() + " - " + events.to.trim() + FILE_SEPARATOR + (events.isDone ? "completed" : "yet to be completed")+"\n");
                     break;
 
                 }
@@ -155,21 +140,6 @@ public class TaskList {
                     UiMessages.FailedFileCreation();
                 }
             } else {
-                // Load tasks from the file
-//                BufferedReader reader = new BufferedReader(new FileReader(file));
-//                String line;
-//                while ((line = reader.readLine()) != null) {
-//                    // Assuming each task is stored in a specific format, like "[T] Task description {completed}"
-//                    String[] taskData = line.split(" \\[");
-//                    if (taskData.length == 2) {
-//                        String description = taskData[1].split("]")[1].trim();
-//                        boolean isDone = taskData[1].contains("{completed}");
-//                        Task task = new Task(description);
-//                        task.isDone = isDone;
-//                        taskList.add(task);
-//                    }
-//                }
-//                reader.close();
                 Scanner scanner = new Scanner(file);
                 while (scanner.hasNextLine()) {
                     String[] currentTask = scanner.nextLine().split(FILE_SEPARATOR);

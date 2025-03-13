@@ -1,3 +1,6 @@
+/**
+ * task type t0d0 - has no time attribute
+ */
 public class ToDos extends Task{
 
     public ToDos(String Description){

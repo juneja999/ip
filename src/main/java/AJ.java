@@ -1,6 +1,3 @@
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * this is the main function for AJ chatbot
@@ -12,7 +9,7 @@ import java.util.ArrayList;
 
 public class AJ {
     
-    public final static String DOTTED_LINE="***********************(^‿^)***************************";
+    public final static String DOTTED_LINE = "***********************(^.^)***************************";
     public final static String AJ_TEXT_INDENTATION = " ".repeat(7);
     //to provide indentation when bot replies
 
@@ -46,21 +43,23 @@ public class AJ {
                 taskList.GetSaveTasksToFile();
                 //save the updated file once the user has exited
                 break;
-            }else if(userCommand.equals("list")){
+            } else if(userCommand.equals("list")){
                 taskList.printTaskList();
 //                    //the taskList has a protected attribute taskList(mention in file TaskList,
 //                    // I'm accessing the index of that attribute)
-//
-            }else{
+            } else{
                 String[] userCommandSplitArray = Parser.userCommandParser(userCommand.split(" "));
                 // array containing only user words, no whitespaces
                 //to tackle edge cases - when extra white spaces between words
                 String targetWord = userCommandSplitArray[0].toLowerCase();
-                if(defaultCaseTurn==1){targetWord="make sure user doesnt put in mark/unmark etc at this stage";}
+                if(defaultCaseTurn==1){
+                    targetWord="make sure user doesnt put in mark/unmark etc at this stage";
+                }
 
                 switch (targetWord.toLowerCase()){ //<------feature
                 case "mark":
                 case "unmark":
+                    //marking and unmarking follow the same logic, we just toggle the task status
                     int taskListIndex = 0;
                     try {
                         taskListIndex = Integer.parseInt(userCommandSplitArray[1]) - 1;
@@ -140,11 +139,12 @@ public class AJ {
                     TaskSearch.searchTask(IsCaseSensitive, userCommandSplitArray,taskList);
                     break;
 
-                default: //if user doesn't mention any of  the above
+                default:
+                    //if user doesn't mention any of  the above
 
                     if(defaultCaseTurn == 0){
                         AJExceptions.taskTypeNotFound(userCommand);
-                        ToDos tempDefaultCase = new ToDos(userCommand);
+                        ToDos tempDefaultCase = new ToDos("todo "+userCommand);
                         taskList.addTask(tempDefaultCase);
                         defaultCaseTurn = 1;
                     }else{
