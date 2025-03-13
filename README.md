@@ -166,32 +166,32 @@ User also needs to specify if the search should be case-sensitive or case-insens
 User **must write cs** to `CaseSensitivity` for case-sensitive search, 
 **otherwise must write ncs**.  
 
-**Format:** `find CaseSensitivity TargetWord(s)`  
-**Example:**
-1. `find ncs dinosaur` will result in 
+   **Format:** `find CaseSensitivity TargetWord(s)`  
+   **Example:**
+   1. `find ncs dinosaur` will result in 
+         ````
+         Here is what I found: 
+         1] [D] dinosaur is forever be (By:789)    
+         2] [T] jamer dinosaur be    {completed}
+         ````
+   2. `find ncs DINOSAUR` will result in 
+      ````
+      1] [D] dinosaur is forever be (By:789)    
+      2] [T] jamer dinosaur be    {completed}
+      ````
+   3. `find cs DINOSAUR` will result in 
+      ````
+      Nothing found :(
+      ````
+   4. `find ncs dinosaur superman` will result in 
       ````
       Here is what I found: 
       1] [D] dinosaur is forever be (By:789)    
       2] [T] jamer dinosaur be    {completed}
+      3] [T] superman    {completed}
       ````
-2. `find ncs DINOSAUR` will result in 
-   ````
-   1] [D] dinosaur is forever be (By:789)    
-   2] [T] jamer dinosaur be    {completed}
-   ````
-3. `find cs DINOSAUR` will result in 
-   ````
-   Nothing found :(
-   ````
-4. `find ncs dinosaur superman` will result in 
-   ````
-   Here is what I found: 
-   1] [D] dinosaur is forever be (By:789)    
-   2] [T] jamer dinosaur be    {completed}
-   3] [T] superman    {completed}
-   ````
-**Warning:** The `CaseSensitivity` field in format ust be specified, otherwise 
-               it will result in incorrect results.    
+   **Warning:** The `CaseSensitivity` field in format ust be specified, otherwise 
+                  it will result in incorrect results.    
 
    
 
