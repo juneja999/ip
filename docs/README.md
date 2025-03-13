@@ -185,7 +185,7 @@ User **must write cs** to `CaseSensitivity` for case-sensitive search,
 
 9. Exiting the programme : `Bye`  
 This will exit the programme.  
-**Format:** `bye`  
+**Format:** `bye`    
 
 ------------------------------------------------
 ### Important Points 
