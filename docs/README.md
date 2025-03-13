@@ -75,7 +75,8 @@ PS:In case I don't see you later, good afternoon, good evening, and good night
    respectively.  
    - Depending upon the task type, they may or may not have a time dimension. More
    description can be found for the individual task type.
-   -  `{completed}` indicates that a task has been done  
+   -  `{completed}` indicates that a task has been done
+     
 
 
 2. Adding a todo: `todo`  
@@ -83,7 +84,8 @@ PS:In case I don't see you later, good afternoon, good evening, and good night
 form of `UserTask` and no time attribute can be provided here.  
    **Format:** `todo UserTask`  
    **Example:**
-   1. `todo sing` will save a task type of todo with description 'sing'.  
+   1. `todo sing` will save a task type of todo with description 'sing'.
+      
 
 
 3. Adding a deadline: `deadline`  
@@ -181,6 +183,7 @@ User **must write cs** to `CaseSensitivity` for case-sensitive search,
       ````
       **Warning:** The `CaseSensitivity` field in format ust be specified, otherwise 
                      it will result in incorrect results.
+      
 
 
 9. Exiting the programme : `Bye`  
