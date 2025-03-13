@@ -186,8 +186,8 @@ User **must write cs** to `CaseSensitivity` for case-sensitive search,
 9. Exiting the programme : `Bye`  
 This will exit the programme.  
 **Format:** `bye`  
------
 
+------------------------------------------------
 ### Important Points 
 1. To make sure that the programme interprets Date and Time, you must **strictly**
 use the format **dd-MM-yyyy hh:mm** , where "d" represents day, "M" represents month,
