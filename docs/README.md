@@ -17,8 +17,9 @@ A super efficient tool for a super efficient you!
 5. Deleting a task: `delete`
 6. Marking a task: `mark`
 7. Unmarking a task: `unmark`
+8. Exiting the program: `bye`
 8. Finding a task with keyword(s):`find`
-9. Exiting the program: `bye`    
+    
 
 
    **NOTE:** All of these commands are case-insensitive  
@@ -75,8 +76,9 @@ PS:In case I don't see you later, good afternoon, good evening, and good night
    respectively.  
    - Depending upon the task type, they may or may not have a time dimension. More
    description can be found for the individual task type.
-   -  `{completed}` indicates that a task has been done
-     
+   -  `{completed}` indicates that a task has been done  
+
+
 
 
 2. Adding a todo: `todo`  
@@ -84,8 +86,10 @@ PS:In case I don't see you later, good afternoon, good evening, and good night
 form of `UserTask` and no time attribute can be provided here.  
    **Format:** `todo UserTask`  
    **Example:**
-   1. `todo sing` will save a task type of todo with description 'sing'.
-      
+   1. `todo sing` will save a task type of todo with description 'sing'.  
+
+
+
 
 
 3. Adding a deadline: `deadline`  
@@ -148,10 +152,15 @@ It will mark the task as  `{completed}` when the `index` is provided.
    ````
    1] [T] this will be difficult
    ````
-   **Note:** `index` >=1
+   **Note:** `index` >=1  
 
 
-8. Finding tasks: `find`  
+8. Exiting the programme : `Bye`  
+      This will exit the programme.  
+      **Format:** `bye`
+
+
+9. Finding tasks: `find`  
 It will find tasks whose description matches the `TargetWord(s)` provided by the user.
 User also needs to specify if the search should be case-sensitive or case-insensitive.
 User **must write cs** to `CaseSensitivity` for case-sensitive search, 
@@ -165,32 +174,31 @@ User **must write cs** to `CaseSensitivity` for case-sensitive search,
       1] [D] dinosaur is forever be (By:789)    
       2] [T] jamer dinosaur be    {completed}
       ````
-   2. `find ncs DINOSAUR` will result in 
-      ````
-      1] [D] dinosaur is forever be (By:789)    
-      2] [T] jamer dinosaur be    {completed}
-      ````
-   3. `find cs DINOSAUR` will result in 
-      ````
-      Nothing found :(
-      ````
-   4. `find ncs dinosaur superman` will result in 
-      ````
-      Here is what I found: 
-      1] [D] dinosaur is forever be (By:789)    
-      2] [T] jamer dinosaur be    {completed}
-      3] [T] superman    {completed}
-      ````
-      **Warning:** The `CaseSensitivity` field in format ust be specified, otherwise 
-                     it will result in incorrect results.
-      
+2. `find ncs DINOSAUR` will result in 
+   ````
+   1] [D] dinosaur is forever be (By:789)    
+   2] [T] jamer dinosaur be    {completed}
+   ````
+3. `find cs DINOSAUR` will result in 
+   ````
+   Nothing found :(
+   ````
+4. `find ncs dinosaur superman` will result in 
+   ````
+   Here is what I found: 
+   1] [D] dinosaur is forever be (By:789)    
+   2] [T] jamer dinosaur be    {completed}
+   3] [T] superman    {completed}
+   ````
+**Warning:** The `CaseSensitivity` field in format ust be specified, otherwise 
+               it will result in incorrect results.    
+
+   
 
 
-9. Exiting the programme : `Bye`  
-This will exit the programme.  
-**Format:** `bye`    
 
-------------------------------------------------
+-----------
+
 ### Important Points 
 1. To make sure that the programme interprets Date and Time, you must **strictly**
 use the format **dd-MM-yyyy hh:mm** , where "d" represents day, "M" represents month,
