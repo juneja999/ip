@@ -38,12 +38,12 @@ public class AJ {
 
             getDottedLine(); //the upper dotted line
 
-            if(userCommand.equals("bye")){
+            if(userCommand.equals("bye") && (defaultCaseTurn==0)){ //CHANGE
                 UiMessages.AJExitMessage();
                 taskList.GetSaveTasksToFile();
                 //save the updated file once the user has exited
                 break;
-            } else if(userCommand.equals("list")){
+            } else if(userCommand.equals("list") && (defaultCaseTurn==0)){
                 taskList.printTaskList();
 //                    //the taskList has a protected attribute taskList(mention in file TaskList,
 //                    // I'm accessing the index of that attribute)
