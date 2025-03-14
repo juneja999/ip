@@ -1,2 +1,4 @@
 1 ~ D ~ CDE2000 ~ 10 am ~ completed
 2 ~ E ~ nacho ~ 10 am - 11 am ~ yet to be completed
+3 ~ T ~ cde2300 ~ yet to be completed
+4 ~ T ~ StS ~ yet to be completed

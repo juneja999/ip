@@ -22,6 +22,12 @@ public class TaskSearch {
                     //these cases are neccesary otherwise it will detect for eg: jupyter for py
                     tasksWithTargetWord.add(taskList.taskList.get(k).getTaskInfo());
                     foundSearch = true;
+                }else if(! isCaseSensitive){
+                    if (taskList.taskList.get(k).taskDescription.contains(TargetWord.toUpperCase())) {
+                        tasksWithTargetWord.add(taskList.taskList.get(k).getTaskInfo());
+                        foundSearch = true;
+                    }
+                    //this is done when upper case is searched for a task description containing Low caps
                 }
             }
 
