@@ -54,6 +54,10 @@ public class UiMessages {
         System.out.println(AJ.AJ_TEXT_INDENTATION+"Please try adding the task again. Thanks!");
     }
 
+    public static void NoCommand(){
+        System.out.println("No command to process....ouch :(");
+    }
+
 
     //Messages in TaskList for storage
     public static void DirectoryCreation() {

@@ -1,3 +1,2 @@
-1 ~ D ~ CDE2000 ~ 10 am ~ yet to be completed
+1 ~ D ~ CDE2000 ~ 10 am ~ completed
 2 ~ E ~ nacho ~ 10 am - 11 am ~ yet to be completed
-3 ~ T ~ hsjnf ~ yet to be completed

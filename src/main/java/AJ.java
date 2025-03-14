@@ -47,7 +47,9 @@ public class AJ {
                 taskList.printTaskList();
 //                    //the taskList has a protected attribute taskList(mention in file TaskList,
 //                    // I'm accessing the index of that attribute)
-            } else{
+            } else if(userCommand.isEmpty()){
+                UiMessages.NoCommand();
+            }else{
                 String[] userCommandSplitArray = Parser.userCommandParser(userCommand.split(" "));
                 // array containing only user words, no whitespaces
                 //to tackle edge cases - when extra white spaces between words
